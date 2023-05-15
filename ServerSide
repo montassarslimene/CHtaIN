@@ -1,0 +1,53 @@
+import java.io.*;
+import java.net.*;
+public class ServerSide {
+    private static final int PORT = 12345;
+
+    public static void main(String[] args) {
+        try {
+            ServerSocket serverSocket = new ServerSocket(PORT);
+            System.out.println("Server started. Listening on port " + PORT);
+
+            while (true) {
+                Socket clientSocket = serverSocket.accept();
+                System.out.println("Client connected: " + clientSocket.getInetAddress().getHostAddress());
+
+                // Handle client request in a separate thread
+                Thread clientThread = new Thread(() -> handleClientRequest(clientSocket));
+                clientThread.start();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void handleClientRequest(Socket clientSocket) {
+        try {
+            // Read client request
+            BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            String request = reader.readLine();
+            System.out.println("Received request from client: " + request);
+
+            // Process request and fetch stock market data
+            String stockData = fetchStockData(request);
+
+            // Send response to client
+            PrintWriter writer = new PrintWriter(clientSocket.getOutputStream(), true);
+            writer.println(stockData);
+
+            // Close resources
+            writer.close();
+            reader.close();
+            clientSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static String fetchStockData(String request) {
+        // TODO: Implement code to fetch stock market data based on client request
+        // This can involve making API requests to your selected stock market data provider
+        // and processing the response to extract relevant stock data
+        return "Stock Market Data";
+    }
+}
