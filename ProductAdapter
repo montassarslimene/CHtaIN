@@ -1,0 +1,7 @@
+package com.example.Marketchat;
+
+import android.os.Bundle;
+
+public interface productAdapter {
+    void onCreate(Bundle savedInstanceState);
+}
