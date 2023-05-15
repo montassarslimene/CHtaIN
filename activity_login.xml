@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/Appbackground"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="28dp">
+
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="140dp"
+        android:text="    Welcom in RTS market"
+        android:textColor="#FDF001"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+
+
+    <ImageView
+        android:layout_width="180dp"
+        android:layout_height="90dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/logo1" />
+
+    <EditText
+        android:layout_width="371dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="8dp"
+        android:hint="Name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:hint="Birthday"
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/emailEditText"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:hint="Email" />
+
+    <EditText
+        android:layout_width="371dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="128dp"
+        android:layout_height="96dp"
+        android:background="@drawable/circular_button"
+        android:gravity="center"
+        android:padding="18dp"
+        android:text="Login"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/refreshButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Refresh" />
+
+
+</LinearLayout>
