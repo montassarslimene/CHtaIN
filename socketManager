@@ -1,0 +1,68 @@
+package com.example.chtain;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.Socket;
+
+public class SocketManager {
+    private Socket socket;
+    private InputStream inputStream;
+    private OutputStream outputStream;
+
+    public SocketManager() {
+        // Initialize socket and streams
+        socket = new Socket();
+        try {
+            inputStream = socket.getInputStream();
+            outputStream = socket.getOutputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void connect(String serverIp, int serverPort) {
+        // Connect to the server
+        try {
+            socket = new Socket(serverIp, serverPort);
+            inputStream = socket.getInputStream();
+            outputStream = socket.getOutputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void disconnect() {
+        // Disconnect from the server
+        try {
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void send(String message) {
+        // Send data to the server
+        try {
+            outputStream.write(message.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String receive() {
+        // Receive data from the server
+        byte[] buffer = new byte[1024];
+        int bytesRead;
+        try {
+            bytesRead = inputStream.read(buffer);
+            return new String(buffer, 0, bytesRead);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void connectSocket() {
+    }
+}
